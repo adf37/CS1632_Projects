@@ -1,6 +1,6 @@
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,13 +12,23 @@ public class PropertyTests {
 		//case at any point the test will fail.
 		@Test
 		public void testIncreasingValues() {
+			ArrayList<Integer> allSizes = new ArrayList<Integer>();
 			//We want to set up a hundred different sized arrays to be used with our property-based testing methods.
 			for (int i=0; i<100; i++){
-				int size = (int)Math.random()*1000 + 1;
+				int size = (int)(Math.random()*1000 + 1);
+				if (!allSizes.contains(size) || i==0){
+					allSizes.add(size);
+				}
+				else{
+					while(allSizes.contains(size)){
+						size = (int)(Math.random()*1000+1);
+					}
+					allSizes.add(size);
+				}
 				int [] arr1 = new int[size];
 				//fill our random-sized integer array with a random number between 0 and 10,000.
 				for (int j=0; j<size; j++){
-					int random = (int)Math.random()*10000;
+					int random = (int)(Math.random()*10000);
 					arr1[j] = random;
 				}
 				Arrays.sort(arr1);
@@ -37,13 +47,23 @@ public class PropertyTests {
 		//Each subsequent value in an indice should be less than or equal to the value of the next indice.
 		@Test
 		public void testNotDescreasing(){
+			ArrayList<Integer> allSizes = new ArrayList<Integer>();
 			//We want to set up a hundred different sized arrays to be used with our property-based testing methods.
 			for (int i=0; i<100; i++){
-				int size = (int)Math.random()*1000 + 1;
+				int size = (int)(Math.random()*1000 + 1);
+				if (!allSizes.contains(size) || i==0){
+					allSizes.add(size);
+				}
+				else{
+					while(allSizes.contains(size)){
+						size = (int)(Math.random()*1000+1);
+					}
+					allSizes.add(size);
+				}
 				int [] arr1 = new int[size];
 				//fill our random-sized integer array with a random number between 0 and 10,000.
 				for (int j=0; j<size; j++){
-					int random = (int)Math.random()*10000;
+					int random = (int)(Math.random()*10000);
 					arr1[j] = random;
 				}	
 				Arrays.sort(arr1);
@@ -62,11 +82,23 @@ public class PropertyTests {
 		//is not in the original array will result in a failed test. 
 		@Test
 		public void testElementsEqual(){
+			ArrayList<Integer> allSizes = new ArrayList<Integer>();
+			//We want to set up a hundred different sized arrays to be used with our property-based testing methods.
 			for (int i=0; i<100; i++){
-				int size = (int)Math.random()*1000+1;
+				int size = (int)(Math.random()*1000+1);
+				if (!allSizes.contains(size) || i==0){
+					allSizes.add(size);
+				}
+				else{
+					while(allSizes.contains(size)){
+						size = (int)(Math.random()*1000+1);
+					}
+					allSizes.add(size);
+				}
 				int [] arr1 = new int[size];
+				//fill our random-sized integer array with a random number between 0 and 10,000.
 				for (int j=0; j<size; j++){
-					int random = (int)Math.random()*10000;
+					int random = (int)(Math.random()*10000);
 					arr1[j] = random;
 				}
 				int [] arr2 = Arrays.copyOf(arr1, arr1.length);
@@ -76,6 +108,7 @@ public class PropertyTests {
 					for (int b=0; b<arr2.length; b++){
 						if (arr1[a] == arr2[b]){
 							count++;
+							break;
 						}
 					}
 				}
