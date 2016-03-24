@@ -119,7 +119,7 @@ public class PropertyTests {
 		//After each of the 100 different random sized arrays are generated and filled with random values we want to check idempotentcy.
 		//Two copies of the original array will be made and each copy will be sorted with the Arrays.sort method. Then each indice will
 		//be checked to see if they match. If at any point this is not the case then the test fails. 
-		public void testIdempotentcy(){
+		public void testIdempotency(){
 			ArrayList<Integer> allSizes = new ArrayList<Integer>();
 			//We want to set up a hundred different sized arrays to be used with our property-based testing methods.
 			for (int i=0; i<100; i++){
