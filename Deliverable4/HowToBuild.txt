@@ -2,6 +2,6 @@ How to build
 ------------------------------
 1. Open the file Deliverable4/src/PropertyTests.java
 2. The necessary jar files for junit testing should be included
-3. The PropertyTests.java file has all three JUnit tests to be run
+3. The PropertyTests.java file has all five JUnit tests to be run
 4. Run as a JUnit test
-5. All three tests should pass testing the Arrays.sort(int[]arr) method
+5. All five tests should pass testing the Arrays.sort(int[]arr) method
