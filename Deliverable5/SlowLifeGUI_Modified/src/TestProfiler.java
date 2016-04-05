@@ -6,6 +6,12 @@ import org.junit.Test;
 
 public class TestProfiler {
 
+	/**
+	 * This method tests the first refractored method which is the getNumNeighbors(int x, int y) method that before called
+	 * convertToInt(int x) unnecessarily resulting in unneeded CPU usage. The refractored method simply returns the calculated
+	 * numNeighbors value instead of making this call. In this test we are looking to make sure that running both the modified 
+	 * and former methods should result in the same value being returned when all cells are alive.
+	 */
 	@Test
 	public void testNumNeighborsAllAlive() {
 		MainPanel test = new MainPanel(15);
@@ -26,6 +32,12 @@ public class TestProfiler {
 		assertEquals(val, val2);
 	}
 	
+	/**
+	 * This method tests the first refractored method which is the getNumNeighbors(int x, int y) method that before called
+	 * convertToInt(int x) unnecessarily resulting in unneeded CPU usage. The refractored method simply returns the calculated
+	 * numNeighbors value instead of making this call. In this test we are looking to make sure that running both the modified 
+	 * and former methods should result in the same value being returned when all cells are dead.
+	 */
 	@Test
 	public void testNumNeighborsAllDead(){
 		MainPanel test = new MainPanel(15);
@@ -46,6 +58,12 @@ public class TestProfiler {
 		assertEquals(test.getNumNeighbors(2, 11), test2.getNumNeighborsModified(2, 11));
 	}
 	
+	/**
+	 * This method tests the first refractored method which is the getNumNeighbors(int x, int y) method that before called
+	 * convertToInt(int x) unnecessarily resulting in unneeded CPU usage. The refractored method simply returns the calculated
+	 * numNeighbors value instead of making this call. In this test we are looking to make sure that running both the modified 
+	 * and former methods should result in the same value being returned when all cells are dead except one.
+	 */
 	@Test
 	public void testNumNeighborsAllDeadExceptOne(){
 		MainPanel test = new MainPanel(15);
@@ -72,6 +90,12 @@ public class TestProfiler {
 		assertEquals(test.getNumNeighbors(2, 1), test2.getNumNeighborsModified(2, 1));
 	}
 	
+	/**
+	 * This method tests the first refractored method which is the getNumNeighbors(int x, int y) method that before called
+	 * convertToInt(int x) unnecessarily resulting in unneeded CPU usage. The refractored method simply returns the calculated
+	 * numNeighbors value instead of making this call. In this test we are looking to make sure that running both the modified 
+	 * and former methods should result in the same value being returned when all cells are alive except for one.
+	 */
 	@Test
 	public void testNumNeighborsAllAliveExceptOne(){
 		MainPanel test = new MainPanel(15);
@@ -98,6 +122,12 @@ public class TestProfiler {
 		assertEquals(test.getNumNeighbors(2, 1), test2.getNumNeighborsModified(2, 1));
 	}
 
+	/**
+	 * This method tests the first refractored method which is the getNumNeighbors(int x, int y) method that before called
+	 * convertToInt(int x) unnecessarily resulting in unneeded CPU usage. The refractored method simply returns the calculated
+	 * numNeighbors value instead of making this call. In this test we are looking to make sure that running both the modified 
+	 * and former methods should result in the same value being returned when some cells are alive and some are dead.
+	 */
 	@Test
 	public void testNumNeighborsMixedAlive(){
 		MainPanel test = new MainPanel(15);
@@ -124,6 +154,12 @@ public class TestProfiler {
 		assertEquals(test.getNumNeighbors(10, 6), test2.getNumNeighborsModified(10, 6));
 	}
 	
+	/**
+	 * This is the third refractored method that added a modification to the previous backup method. In the modified backup method
+	 * the current cells are copied to the backup cells array with the use of Arrays.copyOf method instead of a nested for loop
+	 * that iterates over each individual cell and copying the contents to the that indice in the backup cell array. This method tests
+	 * that the backup cells in both the modified and former method call contain the same values when cells are a mix of alive and dead.
+	 */
 	@Test
 	public void testBackupMixedCells(){
 		MainPanel test = new MainPanel(15);
@@ -159,6 +195,12 @@ public class TestProfiler {
 		assertTrue(true);
 	}
 	
+	/**
+	 * This is the third refractored method that added a modification to the previous backup method. In the modified backup method
+	 * the current cells are copied to the backup cells array with the use of Arrays.copyOf method instead of a nested for loop
+	 * that iterates over each individual cell and copying the contents to the that indice in the backup cell array. This method tests
+	 * that the backup cells in both the modified and former method call contain the same values when all the cells are dead.
+	 */
 	@Test
 	public void testBackupAllDead(){
 		MainPanel test = new MainPanel(15);
@@ -188,6 +230,12 @@ public class TestProfiler {
 		assertTrue(true);
 	}
 	
+	/**
+	 * This is the third refractored method that added a modification to the previous backup method. In the modified backup method
+	 * the current cells are copied to the backup cells array with the use of Arrays.copyOf method instead of a nested for loop
+	 * that iterates over each individual cell and copying the contents to the that indice in the backup cell array. This method tests
+	 * that the backup cells in both the modified and former method call contain the same values when all cells are alive.
+	 */
 	@Test
 	public void testBackupAllAlive(){
 		MainPanel test = new MainPanel(15);
@@ -217,6 +265,10 @@ public class TestProfiler {
 		assertTrue(true);
 	}
 	
+	/**
+	 * This method tests that the refractoring of the runContinuous method is unaffected in its functionality by my refractoring. A thread
+	 * that runs the game with the run continuous method will test that no errors will occur while running the profiler for a short time.
+	 */
 	@Test
 	public void testRunContinuousInitial(){
 		MainPanel test = new MainPanel(15);
@@ -231,6 +283,11 @@ public class TestProfiler {
 		t.stop();
 	}
 	
+	/**
+	 * This method tests that the refractoring of the runContinuous method is unaffected in its functionality by my refractoring. A thread
+	 * that runs the game with the run continuous method will test that no errors will occur while running the profiler for a short time and 
+	 * then stopping the thread's execution.
+	 */
 	@Test
 	public void testRunContinuousStop(){
 		MainPanel test = new MainPanel(15);
@@ -244,6 +301,11 @@ public class TestProfiler {
 		assertFalse(test._running);
 	}
 	
+	/**
+	 * This method tests that the refractoring of the runContinuous method is unaffected in its functionality by my refractoring. A thread
+	 * that runs the game with the run continuous method will test that no errors will occur while running the profiler for a longer period
+	 * of time or fifty iterations.
+	 */
 	@Test
 	public void testRunContinuousLong(){
 		MainPanel test = new MainPanel(15);
@@ -260,6 +322,9 @@ public class TestProfiler {
 		assertFalse(test._running);
 	}
 	
+	/**
+	 * Used to run the threads of Conway's Game of Life to test the run continuous method refractoring.
+	 */
 	class runProfiler implements Runnable{
 		
 		MainPanel panel;
