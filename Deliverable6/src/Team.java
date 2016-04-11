@@ -35,30 +35,19 @@ public class Team{
 		public void setrpiWeight(double r){
 			this.rpiW = r;
 		}
-		public double getrpiWeight(){
-			return rpiW;
-		}
+
 		public void setbpiWeight(double b){
 			this.bpiW = b;
 		}
-		public double getbpiWeight(){
-			return bpiW;
-		}
+
 		public void setadjOWeight(double o){
 			this.adjOW = o;
 		}
-		public double getadjOWeight(){
-			return adjOW;
-		}
+
 		public void setadjDWeight(double d){
 			this.adjDW = d;
 		}
-		public double getadjDWeight(){
-			return adjDW;
-		}
-		public double getLuckWeight(){
-			return luckW;
-		}
+
 		public void setLuckWeight(double l){
 			this.luckW = l;
 		}

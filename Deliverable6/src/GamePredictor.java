@@ -36,6 +36,7 @@ public class GamePredictor {
 	 * 
 	 * @param args
 	 */
+	@SuppressWarnings("resource")
 	public static void initialize(String args) {
 		fillRegions();
 		setWeights();
@@ -71,10 +72,12 @@ public class GamePredictor {
 			Team t2 = allTeams.get(team2);
 			System.out.println("The winner is " + runMatchup(t1, t2));
 		}
-		else{
-			System.out.println("Your command was not recognized.\nPlease enter in either: tournament, region, or game/matchup");
-			read.close();
-			System.exit(1);
+		else
+		{
+			throw new IllegalArgumentException("Command could not be recognized!");
+			//System.out.println("Your command was not recognized.\nPlease enter in either: tournament, region, or game/matchup");
+			//read.close();
+			//System.exit(1);
 		}
 		read.close();
 	}
@@ -164,7 +167,7 @@ public class GamePredictor {
 		int minD = Collections.min(allD);
 		int maxL = Collections.max(allLuck);
 		int minL = Collections.min(allLuck);
-		// =(xi-max)/(min-max)
+		// normalized distribution between 0 and 1 = (xi-max)/(min-max)
 		Iterator<Entry<String, Team>> it = allTeams.entrySet().iterator();
 		while(it.hasNext()) {
 			Map.Entry pair = (Map.Entry)it.next();
@@ -201,8 +204,8 @@ public class GamePredictor {
 		double o2 = (Math.random() * ((team2.adjOW+.1) - (team2.adjOW-.2)+1)+(team2.adjOW-.2))*1.15;
 		double d1 = (Math.random() * ((team1.adjDW+.1) - (team1.adjDW-.2)+1)+(team1.adjDW-.2))*1.25;
 		double d2 = (Math.random() * ((team2.adjDW+.1) - (team2.adjDW-.2)+1)+(team2.adjDW-.2))*1.25;
-		result1 = (rpi1 + bpi1 + o1 + d1)/4 + (team1.getLuckWeight()/15);
-		result2 = (rpi2 + bpi2 + o2 + d2)/4 + (team2.getLuckWeight()/15);
+		result1 = (rpi1 + bpi1 + o1 + d1)/4 + (team1.luckW/15);
+		result2 = (rpi2 + bpi2 + o2 + d2)/4 + (team2.luckW/15);
 		if (result1 >= result2)
 			return team1.name;
 		else
