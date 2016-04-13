@@ -1,0 +1,10 @@
+How to Build
+------------------------------------------------------
+1. Clone the repo to your local desktop 
+2. All of the code needed will be located in src folder of Deliverable6 including the JUnit
+test file called TestGamePredictor.java
+3. All necessary jars should be a part of the eclipse project. Run the TestGamePredictor.java file
+as a JUnit test.
+4. All tests should pass testing the various methods used throughout the program.
+
+Any questions are concerns email: adf37 at pitt dot edu

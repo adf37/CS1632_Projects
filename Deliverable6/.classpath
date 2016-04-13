@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Alec/Desktop/CS1632_SoftwareTesting/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Alec/Desktop/CS1632_SoftwareTesting/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alec/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

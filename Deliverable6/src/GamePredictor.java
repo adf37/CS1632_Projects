@@ -18,8 +18,7 @@ public class GamePredictor {
 
 	public static void main(String[] args) {
 		if (args.length == 0) {
-			System.err.println("You did not input the correct argument. Please enter in either tournament, region, or game/matchup");
-			System.exit(1);
+			throw new IllegalArgumentException("You did not input the correct argument. Please enter in either tournament, region, or game/matchup");
 		}
 		String argument = args[0];
 		initialize(argument);
